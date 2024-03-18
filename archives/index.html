@@ -1,0 +1,163 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>归档 | 黄禄松的博客</title><meta name="keywords" content="打工人 后端开发 技术宅 微服务 分布式 面试 大厂 毒蛇 二次元"><meta name="author" content="黄禄松,1113794717@qq.com"><meta name="copyright" content="黄禄松"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="我发现我的脑子支撑不了我的想法">
+<meta property="og:type" content="website">
+<meta property="og:title" content="黄禄松的博客">
+<meta property="og:url" content="https://huanglusong.github.io/archives/index.html">
+<meta property="og:site_name" content="黄禄松的博客">
+<meta property="og:description" content="我发现我的脑子支撑不了我的想法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://huanglusong.github.io/resources/img/avatar.jpg">
+<meta property="article:author" content="黄禄松">
+<meta property="article:tag" content="打工人 后端开发 技术宅 微服务 分布式 面试 大厂 毒蛇 二次元">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://huanglusong.github.io/resources/img/avatar.jpg"><link rel="shortcut icon" href="/resources/img/avatar.jpg"><link rel="canonical" href="https://huanglusong.github.io/archives/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="code-LrDMx8BXP8"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?9d99b89863bee99b06caa7d4e321bae3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2024-03-10 23:31:47'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><link rel="stylesheet" href="//at.alicdn.com/t/font_2236480_mzzd02u00is.css"><meta name="generator" content="Hexo 5.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/resources/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page" href="/pictures/"><i class="fa-fw fas fa-camera-retro"></i><span> 图片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/pictures/"><i class="fa-fw fas fa-camera-retro"></i><span> 图片</span></a></div></div></div></div><div id="body-wrap"><header class="not-index-bg" id="page-header" style="background-image: url(/resources/img/banner1.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">黄禄松的博客</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page" href="/pictures/"><i class="fa-fw fas fa-camera-retro"></i><span> 图片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/pictures/"><i class="fa-fw fas fa-camera-retro"></i><span> 图片</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="page-site-info"><h1 id="site-title">归档</h1></div></header><main class="layout" id="content-inner"><div id="archive"><div class="article-sort-title">文章总览 - 10</div><div class="article-sort"><div class="article-sort-item year">2023</div><div class="article-sort-item"><a class="article-sort-item-img" href="/2023/12/17/%E7%94%A8vite%E7%9A%84%E6%96%B9%E5%BC%8F%E5%BC%80%E5%8F%91electron%E5%BA%94%E7%94%A8/" title="用vite的方式开发electron应用"><img src="/resources/img/banner1.jpg" alt="用vite的方式开发electron应用" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2023-12-16T17:26:46.000Z" title="发表于 2023-12-17 01:26:46">2023-12-17</time></div><a class="article-sort-item-title" href="/2023/12/17/%E7%94%A8vite%E7%9A%84%E6%96%B9%E5%BC%8F%E5%BC%80%E5%8F%91electron%E5%BA%94%E7%94%A8/" title="用vite的方式开发electron应用">用vite的方式开发electron应用</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2023/06/18/%E5%9F%BA%E4%BA%8Eipv6%E5%AE%9E%E7%8E%B0%E5%87%A0%E4%B9%8E%E9%9B%B6%E6%88%90%E6%9C%AC%E7%9A%84%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%96%B9%E6%A1%88%EF%BC%8C%E5%B0%8F%E7%99%BD%E7%9A%84%E8%B8%A9%E5%9D%91%E5%8E%86%E7%A8%8B%E4%B8%8E%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/" title="基于ipv6实现几乎零成本的内网穿透方案，小白的踩坑历程与经验分享"><img src="/resources/img/banner1.jpg" alt="基于ipv6实现几乎零成本的内网穿透方案，小白的踩坑历程与经验分享" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2023-06-18T12:51:46.000Z" title="发表于 2023-06-18 20:51:46">2023-06-18</time></div><a class="article-sort-item-title" href="/2023/06/18/%E5%9F%BA%E4%BA%8Eipv6%E5%AE%9E%E7%8E%B0%E5%87%A0%E4%B9%8E%E9%9B%B6%E6%88%90%E6%9C%AC%E7%9A%84%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%96%B9%E6%A1%88%EF%BC%8C%E5%B0%8F%E7%99%BD%E7%9A%84%E8%B8%A9%E5%9D%91%E5%8E%86%E7%A8%8B%E4%B8%8E%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/" title="基于ipv6实现几乎零成本的内网穿透方案，小白的踩坑历程与经验分享">基于ipv6实现几乎零成本的内网穿透方案，小白的踩坑历程与经验分享</a></div></div><div class="article-sort-item year">2022</div><div class="article-sort-item"><a class="article-sort-item-img" href="/2022/07/02/%E4%BD%BF%E7%94%A8nodejs%E7%BC%96%E5%86%99%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC%EF%BC%8C%E7%9C%9F%E9%A6%99%EF%BC%81/" title="使用nodejs编写自动化脚本，真香！"><img src="/resources/img/banner1.jpg" alt="使用nodejs编写自动化脚本，真香！" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2022-07-02T10:58:46.000Z" title="发表于 2022-07-02 18:58:46">2022-07-02</time></div><a class="article-sort-item-title" href="/2022/07/02/%E4%BD%BF%E7%94%A8nodejs%E7%BC%96%E5%86%99%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC%EF%BC%8C%E7%9C%9F%E9%A6%99%EF%BC%81/" title="使用nodejs编写自动化脚本，真香！">使用nodejs编写自动化脚本，真香！</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2022/05/02/mybatis%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90_mybatis%E7%9A%84%E7%BC%93%E5%AD%98/" title="Mybatis源码分析-Mybatis的缓存机制"><img src="/resources/img/banner1.jpg" alt="Mybatis源码分析-Mybatis的缓存机制" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2022-05-02T02:58:46.000Z" title="发表于 2022-05-02 10:58:46">2022-05-02</time></div><a class="article-sort-item-title" href="/2022/05/02/mybatis%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90_mybatis%E7%9A%84%E7%BC%93%E5%AD%98/" title="Mybatis源码分析-Mybatis的缓存机制">Mybatis源码分析-Mybatis的缓存机制</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2022/05/02/spring%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90_spring%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E4%BE%8B%E5%8C%96%E7%BB%84%E4%BB%B6%E7%9A%84/" title="spring源码分析_spring是如何实例化组件的"><img src="/resources/img/banner1.jpg" alt="spring源码分析_spring是如何实例化组件的" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2022-05-02T02:58:46.000Z" title="发表于 2022-05-02 10:58:46">2022-05-02</time></div><a class="article-sort-item-title" href="/2022/05/02/spring%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90_spring%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E4%BE%8B%E5%8C%96%E7%BB%84%E4%BB%B6%E7%9A%84/" title="spring源码分析_spring是如何实例化组件的">spring源码分析_spring是如何实例化组件的</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2022/05/01/mybatis%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90_%E5%A6%82%E4%BD%95%E6%89%A7%E8%A1%8Csql%E7%9A%84/" title="mybatis源码分析_如何执行sql的"><img src="/resources/img/banner1.jpg" alt="mybatis源码分析_如何执行sql的" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2022-05-01T01:58:46.000Z" title="发表于 2022-05-01 09:58:46">2022-05-01</time></div><a class="article-sort-item-title" href="/2022/05/01/mybatis%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90_%E5%A6%82%E4%BD%95%E6%89%A7%E8%A1%8Csql%E7%9A%84/" title="mybatis源码分析_如何执行sql的">mybatis源码分析_如何执行sql的</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2022/04/06/spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" title="SPRING注解驱动开发"><img src="/resources/img/banner1.jpg" alt="SPRING注解驱动开发" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2022-04-06T06:58:46.000Z" title="发表于 2022-04-06 14:58:46">2022-04-06</time></div><a class="article-sort-item-title" href="/2022/04/06/spring%E6%B3%A8%E8%A7%A3%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" title="SPRING注解驱动开发">SPRING注解驱动开发</a></div></div><div class="article-sort-item"><a class="article-sort-item-img" href="/2022/04/05/springboot%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/" title="springboot启动流程的总结"><img src="/resources/img/banner1.jpg" alt="springboot启动流程的总结" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2022-04-05T06:58:46.000Z" title="发表于 2022-04-05 14:58:46">2022-04-05</time></div><a class="article-sort-item-title" href="/2022/04/05/springboot%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/" title="springboot启动流程的总结">springboot启动流程的总结</a></div></div><div class="article-sort-item year">2021</div><div class="article-sort-item"><a class="article-sort-item-img" href="/2021/04/05/Java%E5%8A%9D%E9%80%80%E4%B9%8Bspring%E7%B3%BB%E5%88%97%EF%BC%9A%E7%AC%AC%E4%B8%80%E7%AF%87%20spring%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" title="Java劝退之spring系列：第一篇 spring必知必会"><img src="/resources/img/banner1.jpg" alt="Java劝退之spring系列：第一篇 spring必知必会" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2021-04-05T07:05:46.000Z" title="发表于 2021-04-05 15:05:46">2021-04-05</time></div><a class="article-sort-item-title" href="/2021/04/05/Java%E5%8A%9D%E9%80%80%E4%B9%8Bspring%E7%B3%BB%E5%88%97%EF%BC%9A%E7%AC%AC%E4%B8%80%E7%AF%87%20spring%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A/" title="Java劝退之spring系列：第一篇 spring必知必会">Java劝退之spring系列：第一篇 spring必知必会</a></div></div><div class="article-sort-item year">2020</div><div class="article-sort-item"><a class="article-sort-item-img" href="/2020/12/05/%E5%9F%BA%E4%BA%8EGITHUB%20ACTION%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%EF%BC%8C%E7%9C%9F%E9%A6%99%EF%BC%81/" title="基于GITHUB ACTION的定时任务，真香！"><img src="/resources/img/banner1.jpg" alt="基于GITHUB ACTION的定时任务，真香！" onerror="this.onerror=null;this.src='/img/404.jpg'"></a><div class="article-sort-item-info"><div class="article-sort-item-time"><i class="far fa-calendar-alt"></i><time class="post-meta-date-created" datetime="2020-12-05T15:58:46.000Z" title="发表于 2020-12-05 23:58:46">2020-12-05</time></div><a class="article-sort-item-title" href="/2020/12/05/%E5%9F%BA%E4%BA%8EGITHUB%20ACTION%E7%9A%84%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%EF%BC%8C%E7%9C%9F%E9%A6%99%EF%BC%81/" title="基于GITHUB ACTION的定时任务，真香！">基于GITHUB ACTION的定时任务，真香！</a></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/resources/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">黄禄松</div><div class="author-info__description">我发现我的脑子支撑不了我的想法</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/huanglusong"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/huanglusong" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://blog.csdn.net/qq_40748336" target="_blank" title="CSDN"><i class="iconfont icon-csdn1"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">人生最大的幸运是做自己喜欢的事</div></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/12/17/%E7%94%A8vite%E7%9A%84%E6%96%B9%E5%BC%8F%E5%BC%80%E5%8F%91electron%E5%BA%94%E7%94%A8/" title="用vite的方式开发electron应用"><img src="/resources/img/banner1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用vite的方式开发electron应用"/></a><div class="content"><a class="title" href="/2023/12/17/%E7%94%A8vite%E7%9A%84%E6%96%B9%E5%BC%8F%E5%BC%80%E5%8F%91electron%E5%BA%94%E7%94%A8/" title="用vite的方式开发electron应用">用vite的方式开发electron应用</a><time datetime="2023-12-16T17:26:46.000Z" title="发表于 2023-12-17 01:26:46">2023-12-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/18/%E5%9F%BA%E4%BA%8Eipv6%E5%AE%9E%E7%8E%B0%E5%87%A0%E4%B9%8E%E9%9B%B6%E6%88%90%E6%9C%AC%E7%9A%84%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%96%B9%E6%A1%88%EF%BC%8C%E5%B0%8F%E7%99%BD%E7%9A%84%E8%B8%A9%E5%9D%91%E5%8E%86%E7%A8%8B%E4%B8%8E%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/" title="基于ipv6实现几乎零成本的内网穿透方案，小白的踩坑历程与经验分享"><img src="/resources/img/banner1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基于ipv6实现几乎零成本的内网穿透方案，小白的踩坑历程与经验分享"/></a><div class="content"><a class="title" href="/2023/06/18/%E5%9F%BA%E4%BA%8Eipv6%E5%AE%9E%E7%8E%B0%E5%87%A0%E4%B9%8E%E9%9B%B6%E6%88%90%E6%9C%AC%E7%9A%84%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%96%B9%E6%A1%88%EF%BC%8C%E5%B0%8F%E7%99%BD%E7%9A%84%E8%B8%A9%E5%9D%91%E5%8E%86%E7%A8%8B%E4%B8%8E%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/" title="基于ipv6实现几乎零成本的内网穿透方案，小白的踩坑历程与经验分享">基于ipv6实现几乎零成本的内网穿透方案，小白的踩坑历程与经验分享</a><time datetime="2023-06-18T12:51:46.000Z" title="发表于 2023-06-18 20:51:46">2023-06-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/02/%E4%BD%BF%E7%94%A8nodejs%E7%BC%96%E5%86%99%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC%EF%BC%8C%E7%9C%9F%E9%A6%99%EF%BC%81/" title="使用nodejs编写自动化脚本，真香！"><img src="/resources/img/banner1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="使用nodejs编写自动化脚本，真香！"/></a><div class="content"><a class="title" href="/2022/07/02/%E4%BD%BF%E7%94%A8nodejs%E7%BC%96%E5%86%99%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC%EF%BC%8C%E7%9C%9F%E9%A6%99%EF%BC%81/" title="使用nodejs编写自动化脚本，真香！">使用nodejs编写自动化脚本，真香！</a><time datetime="2022-07-02T10:58:46.000Z" title="发表于 2022-07-02 18:58:46">2022-07-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/02/mybatis%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90_mybatis%E7%9A%84%E7%BC%93%E5%AD%98/" title="Mybatis源码分析-Mybatis的缓存机制"><img src="/resources/img/banner1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mybatis源码分析-Mybatis的缓存机制"/></a><div class="content"><a class="title" href="/2022/05/02/mybatis%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90_mybatis%E7%9A%84%E7%BC%93%E5%AD%98/" title="Mybatis源码分析-Mybatis的缓存机制">Mybatis源码分析-Mybatis的缓存机制</a><time datetime="2022-05-02T02:58:46.000Z" title="发表于 2022-05-02 10:58:46">2022-05-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/02/spring%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90_spring%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E4%BE%8B%E5%8C%96%E7%BB%84%E4%BB%B6%E7%9A%84/" title="spring源码分析_spring是如何实例化组件的"><img src="/resources/img/banner1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="spring源码分析_spring是如何实例化组件的"/></a><div class="content"><a class="title" href="/2022/05/02/spring%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90_spring%E6%98%AF%E5%A6%82%E4%BD%95%E5%AE%9E%E4%BE%8B%E5%8C%96%E7%BB%84%E4%BB%B6%E7%9A%84/" title="spring源码分析_spring是如何实例化组件的">spring源码分析_spring是如何实例化组件的</a><time datetime="2022-05-02T02:58:46.000Z" title="发表于 2022-05-02 10:58:46">2022-05-02</time></div></div></div></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/CI-GITHUB-ACTION/" style="font-size: 1.1em; color: #999">CI, GITHUB ACTION,</a> <a href="/tags/JAVA-SPRING/" style="font-size: 1.1em; color: #999">JAVA, SPRING,</a> <a href="/tags/mybatis-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" style="font-size: 1.5em; color: #99a9bf">mybatis,源码分析,</a> <a href="/tags/nas-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F-ipv6/" style="font-size: 1.1em; color: #999">nas,内网穿透,ipv6</a> <a href="/tags/nodejs-javascript/" style="font-size: 1.1em; color: #999">nodejs,javascript</a> <a href="/tags/spring-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" style="font-size: 1.5em; color: #99a9bf">spring,源码分析,</a> <a href="/tags/springboot-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" style="font-size: 1.1em; color: #999">springboot,源码分析,</a> <a href="/tags/vite-electron/" style="font-size: 1.1em; color: #999">vite,electron</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/12/"><span class="card-archive-list-date">十二月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/07/"><span class="card-archive-list-date">七月 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/05/"><span class="card-archive-list-date">五月 2022</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/04/"><span class="card-archive-list-date">四月 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/04/"><span class="card-archive-list-date">四月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><span class="card-archive-list-count">1</span></a></li></ul></div></div></div></div></main><footer id="footer" style="background-image: url(/resources/img/banner1.jpg)"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By 黄禄松</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> {preloader.endLoading()})</script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
