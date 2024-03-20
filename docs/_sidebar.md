@@ -5,3 +5,4 @@
   - [数据分析](statistics)
   - [网站收集](websites)
   - [docsify中文文档](/docs-zh-master/_sidebar)
+  - [resumd template](/resumd/resumd)
