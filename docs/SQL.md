@@ -32,8 +32,8 @@
   - [**case 列名 when 和 case when的区别**](#case-列名-when-和-case-when的区别)
     - [Oracle connect by用法 以及to\_char转换星期几](#oracle-connect-by用法-以及to_char转换星期几)
   - [**算法**](#算法)
-    - [**问题描述：**](#问题描述)
-    - [**示例**](#示例)
+      - [问题描述：](#问题描述)
+      - [示例](#示例)
     - [oracle 函数(储存过程)或表保存卡死,被锁定的解决方案](#oracle-函数储存过程或表保存卡死被锁定的解决方案)
 
 # **Mysql**
@@ -506,7 +506,7 @@ select xx_jbxx_id,jd,wd from xx_xa_xsczaqpc t where regexp_like(jd,'^[1-9]\d*\.\
 全外连接（左右两表都不加限制）
 连接（左右两表交集）
 
-![本地路径](pic/join.png "相对路径演示") 
+![本地路径](_images/join.png "相对路径演示") 
 
 在左连接和右连接时都会以一张表为基础表，另一张表为补充表，基础表的内容会全部显示，然后再加上两张表匹配的内容。 如果基础表的数据在补充表中没有记录， 那么在相关联的结果集行中补充表列显示为空值（NULL）。
 
@@ -707,12 +707,12 @@ SELECT to_char(TRUNC(SYSDATE)+ ROWNUM,'D')-1,to_char(TRUNC(SYSDATE)+ ROWNUM,'DAY
 先用scott用户下的emp表做实验.<br>
 emp表有个字段，一个是empno(员工编号)，另一个是mgr(上级经理编号)<br>
 下面是表中所有数据<br>
-![本地路径](pic/oracle_connnet_by_1.png)
+![本地路径](_images/oracle_connnet_by_1.png)
 ```sql {.line-numbers}
 select * from emp start with empno=7698 connect by  mgr=prior empno;
 ```
 执行结果：
-![本地路径](pic/oracle_connnet_by_2.png)
+![本地路径](_images/oracle_connnet_by_2.png)
 <br>
 得到的结果是empno=7698的数据，以及会得到mgr=7698的数据。<br>
 它是向下递归的, 即我们从empno=7698开始遍历，去找出mgr=7698的所有数据S(用S代表查出的所有数据.), 然后在从S中的empno的值去匹配查找是否还有满足，mgr in (s.empno)的数据。一直遍历进去到没有数据为止。 <br>
@@ -723,14 +723,14 @@ select * from emp start with empno=7698 connect by  mgr=prior empno;
 select * from emp connect by mgr= prior empno start with empno=7839;
 ```
 执行结果如下：<br>
-![本地路径](pic/oracle_connnet_by_3.png)
+![本地路径](_images/oracle_connnet_by_3.png)
 
 ```sql
 --向上递归遍历
 select * from emp connect by prior mgr=empno start with empno=7844;
 ```
 执行结果如下：<br>
-![本地路径](pic/oracle_connnet_by_4.png)
+![本地路径](_images/oracle_connnet_by_4.png)
 这样直到没有匹配的数据为止。
 以上只是简单的举了个例子。
 
@@ -753,10 +753,10 @@ prior运算符必须放置在连接关系的两列中某一个的前面。对于
 start with子句为可选项，用来标识哪个节点作为查找树型结构的根节点。若该子句被省略，则表示所有满足查询条件的行作为根节点。
 
 ## **算法**
-### **问题描述：**
+#### 问题描述：
 把十进制数转换成二进制数，转换的二进制数的第几位数代表每学期的第几周，根据参数里的开始日期和星期几，求出具体日期集合。
 
-### **示例**
+#### 示例
 ```
 **输入描述：**<br>
 20230904 64 1  
