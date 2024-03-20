@@ -4,4 +4,4 @@
   - [NoSql](NoSQL)
   - [数据分析](statistics)
   - [网站收集](websites)
-  - [docsify](docsify)
+  - [docsify中文文档](/docs-zh-master/_sidebar)

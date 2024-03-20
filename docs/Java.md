@@ -154,24 +154,28 @@ java xxx.java 启动单个Java源代码文件的程序时，相关个类必须�
 https://zhuanlan.zhihu.com/p/52814937
 https://zhuanlan.zhihu.com/p/79506166
 
-可视化、大数据治理
+# 可视化、大数据治理
 1,主从复制，读写分离
 2，消息队列 异步执行
 3，分布式存储日志hdfs hadoop
 4，配置中心，注册中心nacos
 服务网关
 Jenkins自动化编译-dockers自动打包 K8S自动化部署
+
 分布式搜索技术
 
-微服务治理 springcloud
-
 devops
+
+微服务治理
 
 异步通信
 
 缓存技术、搜索技术
 
-分布式架构 每个模块负责自己的功能，通过rpc进行异步通信？
+# springcloud
+
+分布式架构 每个模块负责自己的功能，通过rpc进行异步通信？Feign
+
 服务健康状态感知！
 
 微服务原则：
@@ -203,7 +207,7 @@ IDEA复制配置 ，， 再修改选项  选择VM选项-Dserver.port=8082 修改
 
 定义IRule BEAN的实现
 
-```
+```java
 注入bean   全局生效
     @Bean
     public IRule randomRule(){
