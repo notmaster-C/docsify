@@ -8,6 +8,7 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//jsd.lihaoyu.cn/npm/docsify@4/lib/themes/vue.css">
+  <link rel="stylesheet" href="//jsd.lihaoyu.cn/npm/docsify-darklight-theme@latest/dist/style.min.css">
   <!-- 设置浏览器图标 -->
   <link rel="icon" href="_media/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="_media/favicon.ico" type="image/x-icon" />
@@ -16,7 +17,19 @@
     media='all' />
 </head>
 <style>
-  /* 导航栏自定义 */
+  .github-corner{
+    display: none;
+  }
+  /* 主题切换自定义 */
+  #docsify-darklight-theme{
+    position: fixed;
+    height:1.5em;
+    width: 1.5em;
+    top: 5px;
+    right: 1px;
+    transition: all 0.8s;
+  }
+  /* 导航栏自定义 */  
   nav.app-nav ul {
     position: fixed;
     text-align: center;
@@ -76,20 +89,38 @@
     window.$docsify = {
       // 项目名称
       name: '菜菜',
-      nameLink:"#/README",
+      nameLink: "#/README",
       // 仓库地址，点击右上角的Github章鱼猫头像会跳转到此地址
-      repo: 'https://github.com/notmaster-C',
+      repo: 'https://github.com/notmaster-C/docsify',
       //执行js
       executeScript: true,
-      keyBindings: {
-        myCustomBinding: {
-          bindings: 'alt+a',
-          callback(event) {
-            alert('Hello, World!');
-          },
-        },
 
+      // 夜间模式
+      darklightTheme: {
+        defaultTheme: 'dark',
+        // siteFont: 'Source Sans Pro,Helvetica Neue,Arial,sans-serif',
+        // codeFontFamily: 'Roboto Mono, Monaco, courier, monospace',
+        // bodyFontSize: '15px',
+        dark: {
+          background: 'rgb(28,32,34)',
+          highlightColor: '#e96900',
+          codeBackgroundColor: 'rgb(34,39,46)',
+          codeTextColor: '#b4b4b4',
+        },
+        light: {
+          highlightColor: '#e96900',
+        }
       },
+      // 绑定热键 目前失效状态
+      // keyBindings: {
+      //   myCustomBinding: {
+      //     bindings: 'alt+a',
+      //     callback(event) {
+      //       alert('Hello, World!');
+      //     },
+      //   },
+
+      // },
       // 侧边栏支持，默认加载的是项目根目录下的_sidebar.md文件
       loadSidebar: true,
       // 导航栏支持，默认加载的是项目根目录下的_navbar.md文件
@@ -104,12 +135,29 @@
       subMaxLevel: 3,
       // 小屏设备下合并导航栏到侧边栏
       mergeNavbar: true,
+      ccTool:{
+        trigger: 100,
+        bottomOffset: 52,
+        locationOffset: 25,
+        containerColor:'#eee',
+        arrowColor:'#42b9a1',
+        // title: 'TOP',
+        titleAsText: false
+      },
+      //搜索
       search: {
         paths: 'auto',
         placeholder: '搜索',
         noData: '😒找不到结果',
         depth: 3,
       },
+      //分页
+      pagination: {
+            previousText: "上一篇",
+            nextText: "下一篇",
+            crossChapter: true,
+            crossChapterText: true,
+        },
       //字数统计
       count: {
         countable: true,
@@ -117,76 +165,48 @@
         color: 'rgb(90,90,90)',
         language: 'chinese'
       },
+      //更新时间
       timeUpdater: {
         text: " >上次更新时间: {docsify-updated}",
         formatUpdated: "{YYYY}/{MM}/{DD}  {HH}:{mm}:{ss}",
         whereToPlace: "top",  // "top" or "bottom", default to "bottom"
       },
-      // 页脚
-      footer: {
-        copy: '<span id ="sitetime"></span><br><span>Copyright &copy; 2024 &nbsp🥦 </span>',
-        auth: ' <strong><a href="https://github.com/notmaster-C" target="_blank">caicai</a></strong>',
-        pre: '<hr/>',
-        style: 'font-size: 18px; text-align: center;',
-      },
+      plugins: [
+            function (hook, vm) {
+              repo =  vm.config.repo
+                  name = vm.config.name
+                  now = new Date()
+              hook.beforeEach(function (content) { // content为md文件本身的内容
+                  //渲染每个文件之前可以加上一些内容，下面是加上一个GitHub编辑 示例
+                  // const github = `[GitHub](${repo})`;
+                  // // 全局嵌入GitHub编辑功能++ 
+                  // const editHtml = `:memo: 在 ${github}编辑\n`;
+                  // if (vm.route.path == "/") {
+                  //     return editHtml + content;
+                  // }
+                  // // 拼接的内容即为页面最终渲染的效果
+                  // return editHtml + content + `<br>`;
+                });
+              hook.afterEach(function (html) { // 页脚
+                    const footer = [
+                        "<footer style='text-align: center;'>",
+                        '<span >Copyright © 2024-'+now.getFullYear()+' <a href="'+repo+'" target="_blank">'+name+'</a>. All rights reserved.',
+                        "</footer>",
+                    ].join("");
+                    return html + footer;
+                });
+            },
+        ],
     }
 
-  </script>
-  <!-- 页脚 -->
-  <script src="//unpkg.com/docsify-footer-enh/dist/docsify-footer-enh.min.js"></script>
+  </script> 
   <!-- 回到顶部功能 -->
   <script src="https://jsd.lihaoyu.cn/gh/wugenqiang/NoteBook@master/plugin/jquery.js"></script>
-  <script src="https://jsd.lihaoyu.cn/gh/wugenqiang/NoteBook@master/plugin/jquery.goup.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $.goup({
-        trigger: 100,
-        bottomOffset: 52,
-        locationOffset: 25,
-        title: 'TOP',
-        titleAsText: false
-      });
-    });
-  </script>
-
-  <!-- 添加网站运行时间统计 -->
-  <script language=javascript>
-    function siteTime() {
-      window.setTimeout("siteTime()", 1000);
-      var seconds = 1000;
-      var minutes = seconds * 60;
-      var hours = minutes * 60;
-      var days = hours * 24;
-      var years = days * 365;
-      var today = new Date();
-      var todayYear = today.getFullYear();
-      var todayMonth = today.getMonth() + 1;
-      var todayDate = today.getDate();
-      var todayHour = today.getHours();
-      var todayMinute = today.getMinutes();
-      var todaySecond = today.getSeconds();
-      /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
-      year - 作为date对象的年份，为4位年份值
-      month - 0-11之间的整数，做为date对象的月份
-      day - 1-31之间的整数，做为date对象的天数
-      hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
-      minutes - 0-59之间的整数，做为date对象的分钟数
-      seconds - 0-59之间的整数，做为date对象的秒数
-      microseconds - 0-999之间的整数，做为date对象的毫秒数 */
-
-      /* 建站时间 */
-      var t1 = Date.UTC(2024, 03, 19, 00, 00, 00);
-      var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-      var diff = t2 - t1;
-      var diffYears = Math.floor(diff / years);
-      var diffDays = Math.floor((diff / days) - diffYears * 365);
-      var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-      var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
-      var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
-      document.getElementById("sitetime").innerHTML = " 本站已运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分 " + diffSeconds + " 秒 ";
-    }
-    siteTime();
-  </script>
+  <script src="js/main.js"></script>
+  <!-- 夜间模式 -->
+  <script src="//jsd.lihaoyu.cn/npm/docsify-darklight-theme@latest/dist/index.min.js"></script>
+  <!-- 分页 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
   <!-- 复制提醒 -->
   <script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
   <script>

@@ -24,5 +24,3 @@
   * [服务端渲染 (SSR)](docs-zh-master/ssr.md)
   * [文件嵌入](docs-zh-master/embed-files.md)
 
-* [Awesome docsify](docs-zh-master/awesome.md)
-* [Changelog](docs-zh-master/changelog.md)
