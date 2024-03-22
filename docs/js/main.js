@@ -172,7 +172,7 @@ function main(hook, vm) {
     $container.css(params.containerStyle);
     $arrow.css(params.arrowStyle);
     $theme.css(params.themeStyle.public);
-    "light" === params.defaultTheme ? $theme.css(params.themeStyle.light) : $theme.css(params.themeStyle.dark);
+    "light" == params.defaultTheme ? $theme.css(params.themeStyle.dark) : $theme.css(params.themeStyle.light);
 
     $container.append($theme);
     $container.append($arrow);
@@ -188,7 +188,6 @@ function main(hook, vm) {
 
 
     };
-    d('dark')
     // 添加元素
     hook.afterEach((function (html, next) {
         // 解析成 html 后调用。

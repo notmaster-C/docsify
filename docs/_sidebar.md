@@ -1,6 +1,6 @@
   - [Java](Java)
   - [Golang](go)
-  - [Sql](SQL)
+  - [Database](database/_sidebar)
   - [NoSql](NoSQL)
   - [数据分析](statistics)
   - [网站收集](websites)

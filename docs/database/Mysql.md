@@ -44,7 +44,7 @@ SELECT * from dept WHERE json_value->'$.deptLeaderId'='5' and json_value->'$.dep
 ```
 ### 函数查询
 json函数：
-![/_images/mysql_json_1.png](_images/mysql_json_1.png)
+![mysql_json_1.png](../_images/mysql_json_1.png)
 
 - json_extract
 ```sql
