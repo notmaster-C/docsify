@@ -89,7 +89,6 @@ function main(hook, vm) {
                 width: '20px',
                 height: '20px',
                 margin:'20px auto',
-                text: 'asd',
                 transition: 'all 0.8s',
                 'border-radius': '50%',
             },
@@ -132,6 +131,8 @@ function main(hook, vm) {
     };
     //用户自定义参数配置
     if (vm.config.hasOwnProperty("ccTool")) {
+        for (var [r, l] of Object.entries(vm.config.ccTool))
+                ("themeStyle"!==r&&"containerStyle"!==r&&"arrowStyle"!==r,params[r] = l);
         if (vm.config.ccTool.hasOwnProperty("themeStyle")) {         // 新增的 参数 赋给 params
             // for (var [r, l] of Object.entries(o.config.ccTool.themeStyle)) 
             //     "light" !== r && "dark" !== r && "defaultTheme" !== r && (params[r] = l); 
@@ -168,11 +169,11 @@ function main(hook, vm) {
 
     var $theme = $('<div>');
     $theme.addClass(params.themeClass);
-
+    console.log(params.defaultTheme)
+    
     $container.css(params.containerStyle);
     $arrow.css(params.arrowStyle);
     $theme.css(params.themeStyle.public);
-    "light" == params.defaultTheme ? $theme.css(params.themeStyle.dark) : $theme.css(params.themeStyle.light);
 
     $container.append($theme);
     $container.append($arrow);
@@ -185,9 +186,10 @@ function main(hook, vm) {
             for (var [o, r] of Object.entries(params.themeStyle.light)) document.documentElement.style.setProperty("--" + o, r);
         else if ("dark" == e)
             for (var [o, r] of Object.entries(params.themeStyle.dark)) document.documentElement.style.setProperty("--" + o, r);
-
-
     };
+    //渲染默认主题
+    "light" === params.defaultTheme ? (d("light"), $theme.css(params.themeStyle.dark)) : (d("dark"), $theme.css(params.themeStyle.light))
+
     // 添加元素
     hook.afterEach((function (html, next) {
         // 解析成 html 后调用。
