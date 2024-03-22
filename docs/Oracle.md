@@ -1,5 +1,4 @@
 
-- [**Mysql**](#mysql)
 - [**Oracle**](#oracle)
   - [基本语法](#基本语法)
     - [添加列以及注释](#添加列以及注释)
@@ -36,11 +35,6 @@
       - [示例](#示例)
     - [oracle 函数(储存过程)或表保存卡死,被锁定的解决方案](#oracle-函数储存过程或表保存卡死被锁定的解决方案)
 
-# **Mysql**
-```sql
-ALTER TABLE `bigdata_core`.`bigdata_net_log_online_details` 
-MODIFY COLUMN `create_time` datetime DEFAULT CURRENT_TIMESTAMP;
-```
 # **Oracle** 
 ## 基本语法
 ### 添加列以及注释
