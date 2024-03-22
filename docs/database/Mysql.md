@@ -3,6 +3,14 @@
   - [Json数据操作](#json数据操作)
     - [基础查询](#基础查询)
     - [函数查询](#函数查询)
+      - [json函数：](#json函数)
+      - [JSON\_KEYS](#json_keys)
+      - [新增json](#新增json)
+      - [JSON\_SET() ：将数据插入JSON格式中，有key则替换，无key则新增](#json_set-将数据插入json格式中有key则替换无key则新增)
+      - [JSON\_INSERT():插入值（往json中插入新值，但不替换已经存在的旧值）](#json_insert插入值往json中插入新值但不替换已经存在的旧值)
+      - [JSON\_REPLACE](#json_replace)
+      - [JSON\_REMOVE() ：从JSON文档中删除数据](#json_remove-从json文档中删除数据)
+      - [JSON\_SEARCH](#json_search)
 
 # **Mysql**
 ```sql
@@ -24,7 +32,7 @@ CREATE TABLE `dept` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 - 示例数据：
- ```sql
+```sql
 insert into dept VALUES(1,'部门1','{"deptName": "部门1", "deptId": "1", "deptLeaderId": "3"}');
 insert into dept VALUES(2,'部门2','{"deptName": "部门2", "deptId": "2", "deptLeaderId": "4"}');
 insert into dept VALUES(3,'部门3','{"deptName": "部门3", "deptId": "3", "deptLeaderId": "5"}');
@@ -32,7 +40,8 @@ insert into dept VALUES(4,'部门4','{"deptName": "部门4", "deptId": "4", "dep
 insert into dept VALUES(5,'部门5','{"deptName": "部门5", "deptId": "5", "deptLeaderId": "5"}');
 
   ```
-- 查询操作:
+*-* 查询操作:
+  
 ```sql
 -- 单条件
 SELECT * from dept WHERE json_value->'$.deptLeaderId'='5';
@@ -43,20 +52,20 @@ SELECT * from dept WHERE json_value->'$.deptLeaderId'='5' and json_value->'$.dep
 
 ```
 ### 函数查询
-json函数：
+#### json函数：<br>
 ![mysql_json_1.png](../_images/mysql_json_1.png)
 
-- json_extract
+*-* json_extract
 ```sql
 select id,json_extract(json_value,'$.deptName') as deptName from dept;
 ```
-- JSON_KEYS
- ```sql
+#### JSON_KEYS
+```sql
 --  可以将key取出来,value没取
 SELECT JSON_KEYS(json_value) FROM dept 
 ```
-> 新增json
-- JSON_SET() ：将数据插入JSON格式中，有key则替换，无key则新增
+#### 新增json
+#### JSON_SET() ：将数据插入JSON格式中，有key则替换，无key则新增
 ```sql
 -- 比如我们想针对id=2的数据新增一组：newData:新增的数据,修改deptName为新增的部门1
 update dept set json_value=JSON_SET('{"deptName": "部门2", "deptId": "2", "deptLeaderId": "4"}','$.deptName','新增的部门1','$.newData','新增的数据') WHERE id=2;
@@ -74,15 +83,15 @@ update dept set json_value=JSON_SET('{"a":"1","b":"2"}','$.deptName','新增的�
 -- 2  部门2 {a':"1",，"b"："2"，"newData"：“新增的数据"，"deptName”：“新增的部门]1"}
 
 ```
-- JSON_INSERT():插入值（往json中插入新值，但不替换已经存在的旧值）
- ```sql
+#### JSON_INSERT():插入值（往json中插入新值，但不替换已经存在的旧值）
+```sql
 UPDATE dept set json_value=JSON_INSERT('{"a": "1", "b": "2"}', '$.deptName', '新增的部门2','$.newData2','新增的数据2') 
 WHERE id=2
 -- 2  部门2 {”a"："1"，"b"："2"，"deptName”：“新增的部门2"，"newData2"：“新增的数据2"}
 
-  ```
+```
 
-- JSON_REPLACE
+#### JSON_REPLACE
 ```sql
 UPDATE dept set json_value=JSON_REPLACE('{"a": "1", "b": "2", "deptName": "新增的部门2", "newData2": "新增的数据2"}', '$.newData2', '更新的数据2') WHERE id =2;
 
@@ -91,14 +100,14 @@ select * from dept WHERE id =2
 -- 2  部门2 {"a"："1"，"b":"2"，"deptName”：“新增的部门2"，"newData2"："更新的数据2"}
 
 ```
-- JSON_REMOVE() ：从JSON文档中删除数据
+#### JSON_REMOVE() ：从JSON文档中删除数据
 ```sql
 -- 删除key为a的字段。
 UPDATE dept set json_value=JSON_REMOVE('{"a": "1", "b": "2", "deptName": "新增的部门2", "newData2": "更新的数据2"}','$.a') WHERE id =2;
 ```
 
 
-- JSON_SEARCH
+#### JSON_SEARCH
 ```sql
 mysql> SET @j = '["abc", [{"k": "10"}, "def"], {"x":"abc"}, {"y":"bcd"}]';
 
