@@ -1,11 +1,3 @@
-- [**GO**](#go)
-	- [go 版本管理](#go-版本管理)
-	- [**GORM hook**](#gorm-hook)
-		- [hook使用](#hook使用)
-		- [hook方法](#hook方法)
-	- [**西华可视化实战**](#西华可视化实战)
-		- [1. 多下钻](#1-多下钻)
-		- [notes](#notes)
 
 # **GO**
 
@@ -106,7 +98,7 @@ markdown表格
 总结，如果是幂等操作（不会对数据库造成影响的操作，例如查找操作），并不会触发回滚，如果是非幂等操作（增删改等会影响数据库数据的操作），其 hook 的报错会引起事务性的回滚。
 
 ## **西华可视化实战**
-### 1. 多下钻
+### 1. 面向SQL编程
 ```go
 func hanleGetStatistics(c *gin.Context) {
 	var (
@@ -131,31 +123,77 @@ func hanleGetStatistics(c *gin.Context) {
 			common.OutputReuslt(c, common.ErrorNotExistEntity, result)
 			return
 		}
+		l := len(req[i].Params)
+		tx := db.GetDB()
+		var params []interface{}
 		if stat.Key == 0 {
-			rows, err = db.GetDB().Raw(stat.Param).Rows()
-		} else {
-			params := strings.Split(req[i].Param, ",")
-			for len(params) < stat.Key {
-				params = append(params, params[0])
+			rows, err = tx.Raw(stat.Param).Rows()
+			if rows != nil {
+				r := scanRows2map2(rows)
+				result[stat.Res] = r
+				err = rows.Close()
+				if err != nil {
+					return
+				}
 			}
-			rows, err = db.GetDB().Raw(stat.Param, params).Rows()
-
+		} else if l != 0 && stat.Key == l {
+			params = make([]interface{}, l)
+			for ii, s := range req[i].Params {
+				params[ii] = s
+			}
+		} else if l == 0 && stat.Key > 0 {
+			params = make([]interface{}, stat.Key)
+			for j := 0; j < stat.Key; j++ {
+				params[j] = req[i].Param
+			}
+		} else {
+			result["content"] = "参数错误，请检查"
+			return
 		}
+		rows, err = tx.Raw(stat.Param, params...).Rows()
 		if rows != nil {
 			r := scanRows2map2(rows)
-			jsonString, _ := json.Marshal(r)
-			res := string(jsonString)
-			err := rows.Close()
+			result[stat.Res] = r
+			err = rows.Close()
 			if err != nil {
 				return
 			}
-			result[stat.Res] = res
 		}
 	}
 }
+```
+### 函数
+```go
+func scanRows2map(rows *sql.Rows) (res []map[string]interface{}) {
+	defer rows.Close()
+	cols, _ := rows.Columns()
+	cache := make([]interface{}, len(cols))
+	// 为每一列初始化一个指针
+	for index := range cache {
+		var a interface{}
+		cache[index] = &a
+	}
+	for rows.Next() {
+		rows.Scan(cache...)
+		row := make(map[string]interface{})
+		for i, val := range cache {
+			// 处理数据类型
+			v := *val.(*interface{})
+			switch v.(type) {
+			case []uint8:
+				v = string(v.([]uint8))
+			case nil:
+				v = ""
+			}
+			row[cols[i]] = v
+		}
+		res = append(res, row)
+	}
+	rows.Close()
+	return res
+}
 
 ```
-
 
 ### notes
 

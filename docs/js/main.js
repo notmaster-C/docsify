@@ -124,6 +124,7 @@ function main(hook, vm) {
             }
         },
         alwaysVisible: true,
+        changeWithTime:true,
         trigger: 500,
         entryAnimation: 'fade',
         toolSpeed: 'slow',
