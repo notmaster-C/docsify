@@ -8,6 +8,7 @@
 
 # Todo:
 >**📚️Lernning**
+- 确定v1版本需要做哪些部分
 - [Spring Cloud Alibaba](/JAVA#springcloud)
 - [Kubernates](/Kubernates)
 - [MongoDB]()
