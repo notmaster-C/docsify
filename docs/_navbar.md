@@ -1,4 +1,5 @@
-- [首页](/#)
-- [文档](/README)
+- [index](/#)
+- [docs](/README)
+- [resume](https://notmaster-c.github.io/resume/)
 - [Github](https://github.com/notmaster-C/docsify)
 - [Gitee](https://gitee.com/n-mster)
