@@ -21,12 +21,7 @@
 - [Blog by docsify](/#)
 - [Blog by SpringBoot]()
 - [DataEase]()
-<<<<<<< Updated upstream
 - [Docker](/operations/Docker)
-- ...
-=======
-- ...
-
 # Notes:
 1. 确定产品定位和解决方案
 >软件开发过程的第一步是明确想要开发的这款软件的定位、它所解决的主要的问题以及面向的目标人群。产品定位很重要，这关系着产品开发、运营的方向，产品定位决定了它的受众，在明确了目标用户后，产品经理才能根据用户的需求来规划产品开发方案。
@@ -62,4 +57,5 @@
 
 
 搭建SpringCloud Alibaba体系
->>>>>>> Stashed changes
+
+
