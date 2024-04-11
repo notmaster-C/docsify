@@ -6,6 +6,10 @@
 <small>📍   Briefly describe how the event occurred.</small>
 
 
+[gitee](https://gitee.com/itsay/resume)
+[gitee](https://github.com/notmaster-C)
+[resume](https://notmaster-c.github.io/resume/)
+
 # Todo:
 >**📚️Lernning**
 - 确定v1版本需要做哪些部分
