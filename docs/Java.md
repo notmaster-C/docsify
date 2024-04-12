@@ -6,8 +6,8 @@
 使用JSON.parseObject方法将json转化为对象时，对象之间可以多层嵌套，也可以循环嵌套。对象也可以继承其他对象
 注意：对象的setter和getter方法要齐全，少一个则对应的内容会提取不到。
 ```
-# JAVA11
-## 引入关键字var 编译器能根据=右边的实际赋值来自动推断出变量的类型
+## JAVA11
+##### 引入关键字var 编译器能根据=右边的实际赋值来自动推断出变量的类型
 ```java
 var name = "codesheep"; // 自动推断name为String类型
 System.out.println(name);
@@ -50,7 +50,7 @@ public class Test {
      
 }
 ```
-## 官方HTTP Client加持
+##### 官方HTTP Client加持
 ```java
 //发送同步请求：
 
@@ -82,7 +82,7 @@ var response = HttpClient.newHttpClient()
         .send( requestWithAuth, HttpResponse.BodyHandlers.ofString() );
 System.out.println( response.body() ); // 打印获取到的接口返回内容
 ```
-## String处理增强
+##### String处理增强
 ```java
 //新版字符串String类型增加了诸如：isBlank()、strip()、repeat()等方便的字符串处理方法
 
@@ -95,7 +95,7 @@ System.out.println( myName.stripLeading() );  // 打印codesheep ，仅头部空
 System.out.println( myName.stripTrailing() ); // 打印 codesheep，仅尾部空格移除
 System.out.println( myName.repeat(2) );       // 打印 codesheep  codesheep
 ```
-## 集合增强
+##### 集合增强
 主要是增加了诸如of()和copyOf()等方法用于更加方便的创建和复制集合类型
 
 ```java
@@ -114,7 +114,7 @@ var upMapCopy = Map.copyOf( upMap );
 System.out.println(upMap);      // 打印 {刘能=58岁, 赵四=59岁}
 System.out.println(upMapCopy);  // 打印 {刘能=58岁, 赵四=59岁}
 ```
-## 函数式编程增强
+##### 函数式编程增强
 ```java
 var upList = List.of( "刘能", "赵四", "谢广坤" );
 
@@ -131,7 +131,7 @@ var upListSub2 = upList.stream()
 System.out.println( upListSub2 ); // 打印 [刘能]
 ```
 
-## 文件读写增强
+##### 文件读写增强
 ```java
 Path path = Paths.get("/Users/CodeSheep/test.txt");
 String content = Files.readString(path, StandardCharsets.UTF_8);
@@ -143,7 +143,7 @@ InputStream inputStream = new FileInputStream( "/Users/CodeSheep/test.txt" );
 OutputStream outputStream = new FileOutputStream( "/Users/CodeSheep/test2.txt" );
 inputStream.transferTo( outputStream );
 ```
-## 源文件运行
+##### 源文件运行
 jdk11中，通过 java xxx.java 命令，就可直接运行源码文件程序，而且不会产生.class 文件。
 
 一个java文件中包含多个类时，java xxx.java 执行排在最上面的一个类的main方法。
@@ -155,9 +155,7 @@ https://zhuanlan.zhihu.com/p/52814937
 https://zhuanlan.zhihu.com/p/79506166
 
 
-# springcloud
-
-
+## springcloud
 
 分布式架构 每个模块负责自己的功能，通过rpc进行异步通信？Feign
 
@@ -183,7 +181,7 @@ eureka 注册中心 获取地址和端口
 
 IDEA复制配置 ，， 再修改选项  选择VM选项-Dserver.port=8082 修改端口配置
 
-## Ribbon
+### Ribbon
 @LoadBalanced   //负载均衡
 默认配置NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule # 负载均衡规则
 
@@ -209,7 +207,7 @@ ribbon:
     enabled: true # 开启饥饿加载
     clients:
       - userservice # 指定饥饿加载的服务名称
-## eureka:
+### eureka:
 配置
 ```
 eureka:
@@ -239,7 +237,7 @@ eureka:
     service-url:  # eureka的地址信息
       defaultZone: http://127.0.0.1:10086/eureka
 ```
-## nacos
+### nacos
 ```
 startup.cmd -m standalone
 ```
@@ -282,7 +280,7 @@ namespace-》group-》service/data
         namespace: 09e33dc2-2024-410b-bfd5-4fd1d9e17954 #dev 
 ```
 
-## 注册中心
+### 注册中心
 服务消费者定时拉取注册中心的服务列表，进行缓存
 再去负载均衡调用服务提供者对应的服务
 默认是临时示例
@@ -291,7 +289,7 @@ nacos 不会剔除非临时示例，主动心跳查询非临时示例，主动�
 nacos支持主动检测，eureka不支持，主动检测对服务器压力较大
 nacos集群默认采用AP方式，强调数据可用性，存在非临时示例采用CP模式，强调数据可靠性和可用性；  eureka采用AP模式  
 
-## nacos统一配置管理：
+### nacos统一配置管理：
 ### 配置更改热更新
 
 
@@ -359,10 +357,14 @@ feign:
 方式二：抽取
 
 
-# Java 
 ## 基础
+
 ### 反射
+
+
 ### 泛型
+
+
 ## 设计模式
 ### 单例模式
 ### 工厂模式

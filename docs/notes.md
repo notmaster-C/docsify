@@ -41,3 +41,50 @@
 约运动活动
 
 # 日报
+
+```
+每天投50份简历
+刷两道算法题
+规范
+
+```
+
+
+
+
+redis
+哨兵模式
+监测 选主 切换
+
+
+jvm 堆栈区别  和 算法的堆栈
+
+Java多态  重写和重载
+父类出现的地方子类也可以出现 里氏替换原则
+可变字符串：
+stringbuffer 线程不安全 加上了synconized关键字
+stringbuilder线程安全
+
+泛型
+
+集合用泛型
+baseDao baseEntity之类的 用泛型
+mysqltis
+
+
+jvm结构
+
+
+nio非组测 bio阻塞  占用磁盘
+
+
+代理模式 aop  动态生成代理
+
+工厂模式  创建类统一由工厂创建
+
+mybatis  编译期   静态代理  动态代理 运行期 生成
+单例模式 spring对象都是单例模式
+io  装饰模式
+
+
+springboot redis mybatis mysql java 基础
