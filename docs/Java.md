@@ -1,3 +1,4 @@
+## **基础**
 ```
 判断两个对象的引用是否相等，用==号判断。
 判断两个对象的值是否相等，调用equals方法判断。
@@ -6,7 +7,118 @@
 使用JSON.parseObject方法将json转化为对象时，对象之间可以多层嵌套，也可以循环嵌套。对象也可以继承其他对象
 注意：对象的setter和getter方法要齐全，少一个则对应的内容会提取不到。
 ```
-## JAVA11
+#### StringBuffer和StringBuilder区别详解
+
+- 当对字符串进行修改的时候，需要使用 StringBuffer 和 StringBuilder 类。
+
+- 和 String 类不同的是，StringBuffer 和 StringBuilder类的对象能够被多次的修改，并且不产生新的未使用对象。
+
+- StringBuilder 类在 Java 5 中被提出，它和 StringBuffer 之间的最大不同在于 StringBuilder 的方法不是线程安全的（不能同步访问）。
+
+- 由于 StringBuilder 相较于 StringBuffer 有速度优势，多数情况下建议使用 StringBuilder类。然而在应用程序要求线程安全的情况下，则必须使用 StringBuffer 类。
+
+为什么StringBuffer线程安全：
+
+因为 StringBuffer 的所有公开方法都是 synchronized 修饰的，而 StringBuilder 并没有。
+```java
+  @Override
+    public synchronized StringBuffer append(String str) {
+        toStringCache = null;
+        super.append(str);
+        return this;
+    }
+
+    private transient char[] toStringCache;
+
+@Override
+public synchronized String toString() {
+    if (toStringCache == null) {
+        toStringCache = Arrays.copyOfRange(value, 0, count);
+    }
+    return new String(toStringCache, true);
+}
+
+
+```
+
+
+#### 反射
+
+
+#### 泛型
+
+
+#### 设计模式
+#### 单例模式
+#### 工厂模式
+
+#### AOP
+[AOP](https://blog.csdn.net/StreamlineWq/article/details/113546947)
+```java
+/**
+ 在切面里，我们可以作几种处理，通过注解，常用的我已经列出来了，
+ @PointCut：切点，不能有方法体。
+ @Before：程序执行之前
+ @After：程序执行之后
+ @Around：环绕整个程序执行
+ @AfterReturning：返回之前
+ */
+//  这些注解的作用，我做一个比喻，比如我们程序的执行是一根筷子，从筷子头到筷子尾。那么这些注解就表示了，我们要在这根筷子的什么部位做什么事情。
+@Aspect
+@Component
+public class TestAopAnnoAspect {
+
+    @Pointcut("execution(* com.cn.travel.web.portal..*(..))")
+    public void PointCut(){
+    }
+
+    @Before("execution(* com.cn.travel.web.portal..*(..))")
+    public void Before() {
+        System.out.println("请求之前");
+    }
+
+    @Around("execution(* com.cn.travel.web.portal..*(..))")
+    public Object Around(ProceedingJoinPoint joinPoint) throws Throwable {
+        System.out.println("环绕");
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+        Method method = signature.getMethod();
+        AnnotationTest annotationTest = method.getAnnotation(AnnotationTest.class);
+        String type = annotationTest.type();
+        System.out.println("type 为：" + type);
+        return joinPoint.proceed();
+    }
+
+    @After("execution(* com.cn.travel.web.portal..*(..))")
+    public void After() {
+        System.out.println("在请求之后");
+    }
+
+    @AfterReturning("execution(* com.cn.travel.web.portal.TestRestController..*(..))")
+    public void AfterReturning() {
+        System.out.println("在返回之后");
+    }
+}
+
+/**
+     * execution:表达式主体
+     * 第一部分  代表方法返回值类型 *表示任何类型
+     * 第二部分  com.example.demo.controller 表示要监控的包名
+     * 第三部分 .. 代表当前包名以及子包下的所有方法和类
+     * 第四部分 * 代表类名，*代表所有的类
+     * 第五部分 *(..) *代表类中的所有方法(..)代表方法里的任何参数
+     */
+
+
+```
+
+
+
+[协同过滤CSDN](https://blog.csdn.net/MiSiTeLin/article/details/114978781)
+
+[协同过滤项目](https://gitee.com/taisan/recommend_system)
+
+
+#### JAVA11
 ##### 引入关键字var 编译器能根据=右边的实际赋值来自动推断出变量的类型
 ```java
 var name = "codesheep"; // 自动推断name为String类型
@@ -155,6 +267,368 @@ https://zhuanlan.zhihu.com/p/52814937
 https://zhuanlan.zhihu.com/p/79506166
 
 
+## Spring
+
+#### 全局异常处理
+###### **方式一**
+SpringBoot中，@ControllerAdvice 即可开启全局异常处理，使用该注解表示开启了全局异常的捕获
+我们只需在自定义一个方法使用@ExceptionHandler注解然后定义捕获异常的类型即可对这些捕获的异常进行统一的处理。
+```java
+/**
+ * @description: 自定义异常处理
+ * @author: DT
+ * @date: 2021/4/19 21:17
+ * @version: v1.0
+ */
+@ControllerAdvice
+public class MyExceptionHandler {
+
+    @ExceptionHandler(value =Exception.class)
+    @ResponseBody
+    public String exceptionHandler(Exception e){
+        System.out.println("全局异常捕获>>>:"+e);
+        return "全局异常捕获,错误原因>>>"+e.getMessage();
+    }
+}
+
+ @GetMapping("/getById/{userId}")
+public CommonResult<User> getById(@PathVariable Integer userId){
+    // 手动抛出异常
+    int a = 10/0;
+    return CommonResult.success(userService.getById(userId));
+}
+
+```
+>这种方式虽然捕获了全局异常，但是输出在日志里，不方便查看和返回
+
+###### **方式二**
+定义基础接口类:
+```java
+/**
+ * @description: 服务接口类
+ * @author: DT
+ * @date: 2021/4/19 21:39
+ */
+public interface BaseErrorInfoInterface {
+
+    /**
+     *  错误码
+     * @return
+     */
+    String getResultCode();
+
+    /**
+     * 错误描述
+     * @return
+     */
+    String getResultMsg();
+}
+
+```
+定义枚举类:
+```java
+/**
+ * @description: 异常处理枚举类
+ * @author: DT
+ * @date: 2021/4/19 21:41
+ * @version: v1.0
+ */
+public enum ExceptionEnum implements BaseErrorInfoInterface{
+    
+    // 数据操作错误定义
+    SUCCESS("2000", "成功!"),
+    BODY_NOT_MATCH("4000","请求的数据格式不符!"),
+    SIGNATURE_NOT_MATCH("4001","请求的数字签名不匹配!"),
+    NOT_FOUND("4004", "未找到该资源!"),
+    INTERNAL_SERVER_ERROR("5000", "服务器内部错误!"),
+    SERVER_BUSY("5003","服务器正忙，请稍后再试!");
+
+    /**
+     * 错误码
+     */
+    private final String resultCode;
+
+    /**
+     * 错误描述
+     */
+    private final String resultMsg;
+
+    ExceptionEnum(String resultCode, String resultMsg) {
+        this.resultCode = resultCode;
+        this.resultMsg = resultMsg;
+    }
+
+    @Override
+    public String getResultCode() {
+        return resultCode;
+    }
+
+    @Override
+    public String getResultMsg() {
+        return resultMsg;
+    }
+}
+
+```
+
+自定义异常类:
+```java
+/**
+ * @description: 自定义异常类
+ * @author: DT
+ * @date: 2021/4/19 21:44
+ * @version: v1.0
+ */
+public class BizException extends RuntimeException{
+
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * 错误码
+     */
+    protected String errorCode;
+    /**
+     * 错误信息
+     */
+    protected String errorMsg;
+
+    public BizException() {
+        super();
+    }
+
+    public BizException(BaseErrorInfoInterface errorInfoInterface) {
+        super(errorInfoInterface.getResultCode());
+        this.errorCode = errorInfoInterface.getResultCode();
+        this.errorMsg = errorInfoInterface.getResultMsg();
+    }
+
+    public BizException(BaseErrorInfoInterface errorInfoInterface, Throwable cause) {
+        super(errorInfoInterface.getResultCode(), cause);
+        this.errorCode = errorInfoInterface.getResultCode();
+        this.errorMsg = errorInfoInterface.getResultMsg();
+    }
+
+    public BizException(String errorMsg) {
+        super(errorMsg);
+        this.errorMsg = errorMsg;
+    }
+
+    public BizException(String errorCode, String errorMsg) {
+        super(errorCode);
+        this.errorCode = errorCode;
+        this.errorMsg = errorMsg;
+    }
+
+    public BizException(String errorCode, String errorMsg, Throwable cause) {
+        super(errorCode, cause);
+        this.errorCode = errorCode;
+        this.errorMsg = errorMsg;
+    }
+
+
+    public String getErrorCode() {
+        return errorCode;
+    }
+
+    public void setErrorCode(String errorCode) {
+        this.errorCode = errorCode;
+    }
+
+    public String getErrorMsg() {
+        return errorMsg;
+    }
+
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
+    }
+
+    @Override
+    public Throwable fillInStackTrace() {
+        return this;
+    }
+}
+```
+
+自定义数据传输:
+```java
+/**
+ * @description: 自定义数据传输
+ * @author: DT
+ * @date: 2021/4/19 21:47
+ * @version: v1.0
+ */
+public class ResultResponse {
+    /**
+     * 响应代码
+     */
+    private String code;
+
+    /**
+     * 响应消息
+     */
+    private String message;
+
+    /**
+     * 响应结果
+     */
+    private Object result;
+
+    public ResultResponse() {
+    }
+
+    public ResultResponse(BaseErrorInfoInterface errorInfo) {
+        this.code = errorInfo.getResultCode();
+        this.message = errorInfo.getResultMsg();
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Object getResult() {
+        return result;
+    }
+
+    public void setResult(Object result) {
+        this.result = result;
+    }
+
+    /**
+     * 成功
+     *
+     * @return
+     */
+    public static ResultResponse success() {
+        return success(null);
+    }
+
+    /**
+     * 成功
+     * @param data
+     * @return
+     */
+    public static ResultResponse success(Object data) {
+        ResultResponse rb = new ResultResponse();
+        rb.setCode(ExceptionEnum.SUCCESS.getResultCode());
+        rb.setMessage(ExceptionEnum.SUCCESS.getResultMsg());
+        rb.setResult(data);
+        return rb;
+    }
+
+    /**
+     * 失败
+     */
+    public static ResultResponse error(BaseErrorInfoInterface errorInfo) {
+        ResultResponse rb = new ResultResponse();
+        rb.setCode(errorInfo.getResultCode());
+        rb.setMessage(errorInfo.getResultMsg());
+        rb.setResult(null);
+        return rb;
+    }
+
+    /**
+     * 失败
+     */
+    public static ResultResponse error(String code, String message) {
+        ResultResponse rb = new ResultResponse();
+        rb.setCode(code);
+        rb.setMessage(message);
+        rb.setResult(null);
+        return rb;
+    }
+
+    /**
+     * 失败
+     */
+    public static ResultResponse error( String message) {
+        ResultResponse rb = new ResultResponse();
+        rb.setCode("-1");
+        rb.setMessage(message);
+        rb.setResult(null);
+        return rb;
+    }
+
+    @Override
+    public String toString() {
+        return JSONObject.toJSONString(this);
+    }
+
+}
+
+```
+
+自定义全局异常处理:
+```java
+/**
+ * @description: 自定义异常处理
+ * @author: DT
+ * @date: 2021/4/19 21:51
+ * @version: v1.0
+ */
+@ControllerAdvice
+public class GlobalExceptionHandler {
+    
+    private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
+    /**
+     * 处理自定义的业务异常
+     * @param req
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(value = BizException.class)
+    @ResponseBody
+    public ResultResponse bizExceptionHandler(HttpServletRequest req, BizException e){
+        logger.error("发生业务异常！原因是：{}",e.getErrorMsg());
+        return ResultResponse.error(e.getErrorCode(),e.getErrorMsg());
+    }
+
+    /**
+     * 处理空指针的异常
+     * @param req
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(value =NullPointerException.class)
+    @ResponseBody
+    public ResultResponse exceptionHandler(HttpServletRequest req, NullPointerException e){
+        logger.error("发生空指针异常！原因是:",e);
+        return ResultResponse.error(ExceptionEnum.BODY_NOT_MATCH);
+    }
+
+    /**
+     * 处理其他异常
+     * @param req
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(value =Exception.class)
+    @ResponseBody
+    public ResultResponse exceptionHandler(HttpServletRequest req, Exception e){
+        logger.error("未知异常！原因是:",e);
+        return ResultResponse.error(ExceptionEnum.INTERNAL_SERVER_ERROR);
+    }
+}
+
+
+```
+
+
+
+
+```
 ## springcloud
 
 分布式架构 每个模块负责自己的功能，通过rpc进行异步通信？Feign
@@ -181,7 +655,7 @@ eureka 注册中心 获取地址和端口
 
 IDEA复制配置 ，， 再修改选项  选择VM选项-Dserver.port=8082 修改端口配置
 
-### Ribbon
+#### Ribbon
 @LoadBalanced   //负载均衡
 默认配置NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule # 负载均衡规则
 
@@ -207,7 +681,7 @@ ribbon:
     enabled: true # 开启饥饿加载
     clients:
       - userservice # 指定饥饿加载的服务名称
-### eureka:
+#### eureka:
 配置
 ```
 eureka:
@@ -237,7 +711,7 @@ eureka:
     service-url:  # eureka的地址信息
       defaultZone: http://127.0.0.1:10086/eureka
 ```
-### nacos
+#### nacos
 ```
 startup.cmd -m standalone
 ```
@@ -280,7 +754,7 @@ namespace-》group-》service/data
         namespace: 09e33dc2-2024-410b-bfd5-4fd1d9e17954 #dev 
 ```
 
-### 注册中心
+#### 注册中心
 服务消费者定时拉取注册中心的服务列表，进行缓存
 再去负载均衡调用服务提供者对应的服务
 默认是临时示例
@@ -289,8 +763,8 @@ nacos 不会剔除非临时示例，主动心跳查询非临时示例，主动�
 nacos支持主动检测，eureka不支持，主动检测对服务器压力较大
 nacos集群默认采用AP方式，强调数据可用性，存在非临时示例采用CP模式，强调数据可靠性和可用性；  eureka采用AP模式  
 
-### nacos统一配置管理：
-### 配置更改热更新
+#### nacos统一配置管理：
+#### 配置更改热更新
 
 
 spring配置获取步骤：
@@ -310,7 +784,7 @@ spring:
       config:
         file-extension: yaml # 文件后缀名
 ```
-### 热更新
+#### 热更新
 ```
     @GetMapping("now")
     public String now(){
@@ -332,11 +806,11 @@ public class PatternProperties {
 }
 ```
 
-### 多配置共享
+#### 多配置共享
 
 优先级：服务名-profile.yaml > 服务名.yaml > 本地配置
 
-### feign
+#### feign
 feign 继承了ribbon 所以具备负载均衡和重试机制
 
 性能优化
@@ -357,16 +831,6 @@ feign:
 方式二：抽取
 
 
-## 基础
 
-### 反射
-
-
-### 泛型
-
-
-## 设计模式
-### 单例模式
-### 工厂模式
 
 
