@@ -1,4 +1,4 @@
-# **Caicai Blog** 
+# **Caicai Thoughts** 
 
 -  ⛹️**Build by docsify**
 <small>🚴‍♂️   A magical documentation site generator.</small>
@@ -6,9 +6,10 @@
 <small>📍   Briefly describe how the event occurred.</small>
 
 
-[gitee](https://gitee.com/itsay/resume)
-[gitee](https://github.com/notmaster-C)
-[resume](https://notmaster-c.github.io/resume/)
+[👓gitee](https://gitee.com/itsay/resume)
+[🕶️github](https://github.com/notmaster-C)
+[👔resume](https://notmaster-c.github.io/resume/)
+[👕blog](http://notmastr.cn/)
 
 # Todo:
 >**📚️Lernning**
@@ -22,8 +23,8 @@
 
 
 > **🕹️Building**
-- [Blog by docsify](/#)
-- [Blog by SpringBoot]()
+- [Thoughts by docsify](/#)
+- [Thoughts by SpringBoot]()
 - [DataEase]()
 - [Docker](/operations/Docker)
 # Notes:
