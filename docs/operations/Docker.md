@@ -208,3 +208,33 @@ Docker 容器的重启策略具体如下：
 --  直到时间间隔超过 1 分钟时，后续的每一次重启的时间间隔都固定为 1 分钟。
 - 关于 --restart 策略失效的设定：
 - - 当执行容器 stop 时， --restart 失效，容器不再尝试重启。实验中，重启日志一直停留在“2022/03/30 04:04:39”。
+
+
+## docker安装jdk环境
+todo: 实现不同容器控制不同jdk版本,便于多个项目切换
+
+```bash
+# 默认拉取的java:latest 后面可知版本是jdk1.8.0_111
+docker pull java 
+
+
+#exec报错: attach成功登录,可以看到版本是jdk1.8.0_111
+
+notmastr@notmastr-PC:~$ docker exec 03a1 -it bash
+OCI runtime exec failed: exec failed: unable to start container process: exec: "-it": executable file not found in $PATH: unknown
+
+notmastr@notmastr-PC:~$ docker attach 03a1
+root@03a1976e3f69:/#
+
+root@03a1976e3f69:/# java -version
+openjdk version "1.8.0_111"
+OpenJDK Runtime Environment (build 1.8.0_111-8u111-b14-2~bpo8+1-b14)
+OpenJDK 64-Bit Server VM (build 25.111-b14, mixed mode)
+
+# ctrl +d 退出，容器也一并退出.
+```
+> 注：下面两篇文章都是如何 部署java环境，并非搭建开发环境。
+
+[参考文章:博客园-在Docker中安装JDK](https://www.cnblogs.com/zhaokejin/p/15605227.html)
+
+[参考文章：Docker最全教程之使用Docker搭建Java开发环境（十七） ](https://www.cnblogs.com/codelove/p/10521104.html)
